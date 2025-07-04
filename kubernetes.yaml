@@ -6,23 +6,23 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-nest-dpp
+  name: backend-nest-test-dpp
   namespace: lab-dpp
   labels:
-    app: backend-nest-dpp
+    app: backend-nest-test-dpp
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: backend-nest-dpp
+      app: backend-nest-test-dpp
   template:
     metadata:
       labels:
-        app: backend-nest-dpp
+        app: backend-nest-test-dpp
     spec:
       containers:
-      - name: backend-nest-dpp
-        image: us-west1-docker.pkg.dev/lab-agibiz/docker-repository/backend-nest-dpp
+      - name: backend-nest-test-dpp
+        image: us-west1-docker.pkg.dev/lab-agibiz/docker-repository/backend-nest-test-dpp
         imagePullPolicy: Always
       imagePullSecrets:
       - name: regcred
@@ -36,7 +36,7 @@ metadata:
     app: backend-nest-svc
 spec:
   selector:
-    app: backend-nest-dpp
+    app: backend-nest-test-dpp
   ports:
   - protocol: TCP
     port: 80
@@ -45,7 +45,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-backend-nest-dpp
+  name: ingress-backend-nest-test-dpp
   namespace: lab-dpp
 spec:
   ingressClassName: nginx
