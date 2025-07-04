@@ -69,7 +69,7 @@ pipeline {
 
             steps {
                 withKubeConfig([credentialsId: 'gcp-kubeconfig']) {
-                    sh "kubectl -n lab-abc set image deployment/${imageName} ${imageName}=${dockerImagePrefix}/${imageName}:${BUILD_NUMBER}"
+                    sh "kubectl -n lab-dpp set image deployment/${imageName} ${imageName}=${dockerImagePrefix}/${imageName}:${BUILD_NUMBER}"
                 }
             }
         }
